@@ -11,5 +11,10 @@ export class StudentController {
     create(@Body() studentData: Partial<Student>): Promise<Student> {
         return this.studentService.create(studentData);
     }
+    // Endpoint to fetch all students
+    @Get()
+    findAll(): Promise<Student[]> {
+        return this.studentService.findAll();
+    }
 
 }
