@@ -19,4 +19,8 @@ export class StudentService {
     async findAll(): Promise<Student[]> {
         return this.studentRepository.find();
     }
+    async update(id: number, updateData: Partial<Student>): Promise<Student> {
+        await this.studentRepository.update(id, updateData);
+        return this.studentRepository.findOneBy({ id });
+    }
 }
