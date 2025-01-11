@@ -20,5 +20,9 @@ export class StudentController {
     update(@Param('id') id: number, @Body() updateData: Partial<Student>) {
         return this.studentService.update(id, updateData);
     }
+    @Delete(':id')
+    remove(@Param('id') id: number) {
+        return this.studentService.remove(id);
+    }
 
 }
