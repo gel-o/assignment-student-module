@@ -25,11 +25,12 @@ export class StudentService {
         }
         return student;
     }
-    async update(id: number, updateStudentDto: any): Promise<Student> {
-        // Update the student entity
-        await this.studentRepository.update(id, updateStudentDto);
-        
-        // Find and return the updated student by ID
-        return this.studentRepository.findOne({ where: { id } });
+    async update(id: number, updateData: Partial<Student>): Promise<Student> {
+        await this.studentRepository.update(id, updateData);
+        return this.studentRepository.findOneBy({ id });
     }
+    async remove(id: number): Promise<void> {
+        await this.studentRepository.delete(id);
+    }
+
 }
